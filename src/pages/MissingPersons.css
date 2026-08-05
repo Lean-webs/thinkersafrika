@@ -1,0 +1,217 @@
+/* Shared left-aligned copy block — matches How we work */
+.locator-copy {
+  text-align: left;
+  max-width: 42rem;
+}
+
+.locator-h1 {
+  font-size: clamp(2.8rem, 8vw, 5.2rem);
+  max-width: 12ch;
+  margin: 1rem 0 0;
+}
+
+.locator-h1 em {
+  font-style: normal;
+  color: var(--red);
+}
+
+.locator-h2 {
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  margin-top: 1rem;
+  max-width: 18ch;
+  text-align: left;
+}
+
+.locator-prose {
+  margin-top: 1.35rem;
+  max-width: 42rem;
+  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+  line-height: 1.7;
+  color: rgba(244, 241, 236, 0.78);
+  text-align: left;
+}
+
+.locator-prose-stack {
+  margin-top: 1.35rem;
+  display: grid;
+  gap: 1.15rem;
+  max-width: 42rem;
+}
+
+.locator-prose-stack p {
+  font-size: clamp(1.02rem, 1.4vw, 1.15rem);
+  line-height: 1.7;
+  color: rgba(244, 241, 236, 0.82);
+  text-align: left;
+}
+
+.locator-hero .page-hero__shade {
+  background: linear-gradient(
+      180deg,
+      rgba(11, 11, 11, 0.45) 0%,
+      rgba(11, 11, 11, 0.25) 35%,
+      rgba(11, 11, 11, 0.82) 100%
+    ),
+    radial-gradient(
+      ellipse at 75% 25%,
+      rgba(225, 6, 0, 0.18),
+      transparent 55%
+    );
+}
+
+.locator-hero .page-hero__content {
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  padding-inline: 0;
+}
+
+.locator-hero .locator-prose {
+  color: rgba(244, 241, 236, 0.82);
+}
+
+.monitor-grid {
+  display: grid;
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+.monitor-card {
+  padding: 1.75rem 1.5rem;
+  border: 1px solid var(--line);
+  background: var(--ink-lift);
+  height: 100%;
+  text-align: left;
+}
+
+.monitor-card span {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--red);
+  letter-spacing: 0.12em;
+}
+
+.monitor-card h3 {
+  font-size: 1.4rem;
+  margin: 0.75rem 0 0.7rem;
+}
+
+.monitor-card p {
+  color: var(--mute);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.band-section {
+  position: relative;
+  min-height: min(68vh, 640px);
+  display: flex;
+  align-items: center;
+  padding: clamp(4rem, 9vw, 6.5rem) 0;
+  overflow: hidden;
+}
+
+.band-section--tall {
+  min-height: min(78vh, 760px);
+}
+
+.band-section__media {
+  position: absolute;
+  inset: 0;
+}
+
+.band-section__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+#health .band-section__media img {
+  object-position: 55% center;
+}
+
+#reports .band-section__media img {
+  object-position: center 40%;
+}
+
+#why-underground .band-section__media img {
+  object-position: center 45%;
+}
+
+.band-section__shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(11, 11, 11, 0.92) 0%,
+    rgba(11, 11, 11, 0.78) 48%,
+    rgba(11, 11, 11, 0.45) 100%
+  );
+}
+
+.band-section__shade--strong {
+  background: linear-gradient(
+      90deg,
+      rgba(11, 11, 11, 0.94) 0%,
+      rgba(11, 11, 11, 0.82) 42%,
+      rgba(11, 11, 11, 0.55) 100%
+    ),
+    linear-gradient(180deg, rgba(11, 11, 11, 0.25), rgba(11, 11, 11, 0.55));
+}
+
+.band-section > .container {
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 900px) {
+  #health .band-section__shade--strong,
+  #reports .band-section__shade--strong {
+    background: linear-gradient(
+        90deg,
+        rgba(11, 11, 11, 0.95) 0%,
+        rgba(11, 11, 11, 0.88) 38%,
+        rgba(11, 11, 11, 0.35) 72%,
+        rgba(11, 11, 11, 0.2) 100%
+      ),
+      linear-gradient(180deg, rgba(11, 11, 11, 0.2), rgba(11, 11, 11, 0.5));
+  }
+}
+
+.locator-bullets {
+  margin-top: 0.2rem;
+  display: grid;
+  gap: 0.75rem;
+  text-align: left;
+}
+
+.locator-bullets li {
+  position: relative;
+  padding-left: 1.35rem;
+  color: rgba(244, 241, 236, 0.9);
+  font-size: 0.98rem;
+  line-height: 1.5;
+}
+
+.locator-bullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: var(--red);
+}
+
+@media (min-width: 760px) {
+  .monitor-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1100px) {
+  .monitor-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

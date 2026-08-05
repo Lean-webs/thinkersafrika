@@ -1,0 +1,87 @@
+.service-h2 {
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  margin-top: 1rem;
+  max-width: 16ch;
+}
+
+.capability-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.capability {
+  padding: 1.75rem 1.5rem;
+  border: 1px solid var(--line);
+  background: var(--ink-lift);
+  height: 100%;
+}
+
+.capability span {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--red);
+  letter-spacing: 0.12em;
+}
+
+.capability h3 {
+  font-size: 1.45rem;
+  margin: 0.75rem 0 0.7rem;
+}
+
+.capability p {
+  color: var(--mute);
+  font-size: 0.95rem;
+}
+
+.service-media {
+  overflow: hidden;
+  min-height: 320px;
+}
+
+.service-media img {
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
+  object-fit: cover;
+}
+
+.service-list {
+  margin: 1.5rem 0 0;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.service-list li {
+  position: relative;
+  padding-left: 1.4rem;
+  color: rgba(244, 241, 236, 0.82);
+}
+
+.service-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55rem;
+  width: 0.55rem;
+  height: 0.55rem;
+  background: var(--red);
+}
+
+.service-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 2rem;
+}
+
+@media (min-width: 760px) {
+  .capability-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1100px) {
+  .capability-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

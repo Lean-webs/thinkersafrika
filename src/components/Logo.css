@@ -1,0 +1,28 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  z-index: 2;
+  line-height: 0;
+  flex-shrink: 0;
+}
+
+.logo__img {
+  height: 2.85rem;
+  width: auto;
+  max-width: min(12.5rem, 52vw);
+  display: block;
+  object-fit: contain;
+  object-position: left center;
+  opacity: 0.96;
+}
+
+.logo--compact .logo__img {
+  height: 2.3rem;
+}
+
+@media (min-width: 900px) {
+  .logo__img {
+    height: 3.2rem;
+    max-width: 14rem;
+  }
+}
