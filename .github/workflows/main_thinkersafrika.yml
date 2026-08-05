@@ -66,6 +66,24 @@ jobs:
         with:
           name: node-app
 
+      - name: Verify publish profile secret
+        env:
+          PROFILE: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+        run: |
+          if [ -z "$PROFILE" ]; then
+            echo "::error::Secret AZURE_WEBAPP_PUBLISH_PROFILE is missing or empty."
+            echo "GitHub → Settings → Secrets and variables → Actions → New repository secret"
+            echo "Name must be exactly: AZURE_WEBAPP_PUBLISH_PROFILE"
+            exit 1
+          fi
+          if ! printf '%s' "$PROFILE" | grep -q 'scm.azurewebsites.net'; then
+            echo "::error::Publish profile has no Kudu URL (SCM basic auth likely off when downloaded)."
+            echo "Azure → thinkersafrika → Configuration → General settings → SCM Basic Auth = On"
+            echo "Then Download publish profile again and replace the GitHub secret."
+            exit 1
+          fi
+          echo "Publish profile secret looks valid."
+
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
