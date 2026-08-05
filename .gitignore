@@ -32,6 +32,10 @@ logo.jpeg
 .env.*
 !.env.example
 
+# Local Azure deploy artifacts
+deploy/
+site.zip
+
 # Deploy private keys must never be committed
 *-deploy
 *-deploy.pub
