@@ -1,7 +1,7 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
+# Build Vite site and deploy to Azure App Service via Kudu ZipDeploy.
+# Uses the publish profile directly (supports new regional SCM hostnames).
 
-name: Build and deploy Node.js app to Azure Web App - thinkersafrika
+name: Build and deploy to Azure Web App - thinkersafrika
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -18,13 +18,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Set up Node.js version
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "22.x"
           cache: npm
 
-      - name: npm install and build
+      - name: Install and build
         run: |
           npm ci
           npm run build
@@ -46,49 +46,87 @@ jobs:
             }
           }
           EOF
-          cd deploy && npm install --omit=dev
-
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v4
-        with:
-          name: node-app
-          path: deploy
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    permissions:
-      contents: read
-
-    steps:
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v4
-        with:
-          name: node-app
+          cd deploy
+          npm install --omit=dev
+          zip -r ../site.zip .
 
       - name: Verify publish profile secret
         env:
-          PROFILE: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          PUBLISH_PROFILE: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
         run: |
-          if [ -z "$PROFILE" ]; then
-            echo "::error::Secret AZURE_WEBAPP_PUBLISH_PROFILE is missing or empty."
-            echo "GitHub → Settings → Secrets and variables → Actions → New repository secret"
-            echo "Name must be exactly: AZURE_WEBAPP_PUBLISH_PROFILE"
+          if [ -z "$PUBLISH_PROFILE" ]; then
+            echo "::error::Missing GitHub secret AZURE_WEBAPP_PUBLISH_PROFILE"
             exit 1
           fi
-          if ! printf '%s' "$PROFILE" | grep -q 'scm.azurewebsites.net'; then
-            echo "::error::Publish profile has no Kudu URL (SCM basic auth likely off when downloaded)."
-            echo "Azure → thinkersafrika → Configuration → General settings → SCM Basic Auth = On"
-            echo "Then Download publish profile again and replace the GitHub secret."
+          if ! printf '%s' "$PUBLISH_PROFILE" | grep -Eqi 'publishMethod="ZipDeploy"|scm\.'; then
+            echo "::error::Publish profile does not look like an Azure App Service profile"
             exit 1
           fi
-          echo "Publish profile secret looks valid."
+          echo "Publish profile secret is present."
 
-      - name: Deploy to Azure Web App
-        id: deploy-to-webapp
-        uses: azure/webapps-deploy@v3
-        with:
-          app-name: thinkersafrika
-          slot-name: Production
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: .
+      - name: Deploy with Kudu ZipDeploy
+        env:
+          PUBLISH_PROFILE: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+        run: |
+          python3 <<'PY'
+          import os, re, sys, urllib.request, ssl, base64
+
+          profile = os.environ["PUBLISH_PROFILE"]
+
+          def attrs(tag: str) -> dict[str, str]:
+              return {
+                  k: v
+                  for k, v in re.findall(r'([A-Za-z]+)="([^"]*)"', tag)
+              }
+
+          profiles = re.findall(r"<publishProfile\b[^>]*>", profile, flags=re.I)
+          if not profiles:
+              print("::error::No <publishProfile> entries found in secret", file=sys.stderr)
+              sys.exit(1)
+
+          chosen = None
+          for tag in profiles:
+              a = attrs(tag)
+              method = a.get("publishMethod", "")
+              url = a.get("publishUrl", "")
+              if method == "ZipDeploy" or (method == "MSDeploy" and "scm." in url):
+                  chosen = a
+                  if method == "ZipDeploy":
+                      break
+
+          if not chosen:
+              print("::error::Could not find ZipDeploy/MSDeploy credentials in profile", file=sys.stderr)
+              sys.exit(1)
+
+          publish_url = chosen["publishUrl"].replace(":443", "")
+          user = chosen["userName"]
+          password = chosen["userPWD"]
+          host = publish_url.split(":")[0]
+          deploy_url = f"https://{host}/api/zipdeploy?isAsync=false"
+
+          print(f"Deploying to {deploy_url}")
+
+          data = open("site.zip", "rb").read()
+          req = urllib.request.Request(deploy_url, data=data, method="POST")
+          token = base64.b64encode(f"{user}:{password}".encode()).decode()
+          req.add_header("Authorization", f"Basic {token}")
+          req.add_header("Content-Type", "application/octet-stream")
+          req.add_header("Content-Length", str(len(data)))
+
+          try:
+              with urllib.request.urlopen(req, timeout=600) as resp:
+                  body = resp.read().decode("utf-8", errors="replace")
+                  print(f"Status: {resp.status}")
+                  if body:
+                      print(body[:1000])
+          except Exception as exc:
+              print(f"::error::ZipDeploy failed: {exc}", file=sys.stderr)
+              if hasattr(exc, "read"):
+                  try:
+                      print(exc.read().decode("utf-8", errors="replace")[:2000], file=sys.stderr)
+                  except Exception:
+                      pass
+              sys.exit(1)
+
+          print("Deploy finished.")
+          PY
