@@ -1,6 +1,6 @@
 # Thinkers Afrika Website
 
-New marketing site for [Thinkers Afrika](https://www.thinkersafrika.co.za) — commodity transport, diesel supply, Miner Real-Time Locator (MRTL), fleet monitoring and Total Mine Visibility.
+New marketing site for [Thinkers Afrika](https://www.thinkersafrika.co.za) — commodity transport, diesel supply, Miner Real-Time Locator (MRTL), fleet monitoring and Yellow Plant Visibility.
 
 ## Develop
 
@@ -24,7 +24,7 @@ npm run preview
 - `/diesel` — Diesel Supply
 - `/missing-persons` — Miner Real-Time Locator (MRTL)
 - `/fleet-monitoring` — Fleet monitoring (legacy `/tihlo` redirects here)
-- `/total-mine-visibility` — Total Mine Visibility
+- `/yellow-plant-visibility` — Yellow Plant Visibility
 - `/contact` — Contact
 
 Contact: info@thinkersafrika.co.za · +27 10 012 6094

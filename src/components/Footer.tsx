@@ -10,7 +10,7 @@ export function Footer() {
           <Logo />
           <p>
             Commodity transport, diesel supply, Miner Real-Time Locator (MRTL),
-            fleet monitoring and Total Mine Visibility, built for South African
+            fleet monitoring and Yellow Plant Visibility, built for South African
             mining operations.
           </p>
         </div>
@@ -46,7 +46,7 @@ export function Footer() {
                 <Link to="/fleet-monitoring">Fleet monitoring</Link>
               </li>
               <li>
-                <Link to="/total-mine-visibility">Total Mine Visibility</Link>
+                <Link to="/yellow-plant-visibility">Yellow Plant Visibility</Link>
               </li>
             </ul>
           </div>

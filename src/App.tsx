@@ -21,7 +21,14 @@ export default function App() {
           <Route path="missing-persons" element={<MissingPersons />} />
           <Route path="fleet-monitoring" element={<FleetMonitoring />} />
           <Route path="tihlo" element={<Navigate to="/fleet-monitoring" replace />} />
-          <Route path="total-mine-visibility" element={<TotalMineVisibility />} />
+          <Route
+            path="yellow-plant-visibility"
+            element={<TotalMineVisibility />}
+          />
+          <Route
+            path="total-mine-visibility"
+            element={<Navigate to="/yellow-plant-visibility" replace />}
+          />
           <Route path="contact" element={<Contact />} />
         </Route>
       </Routes>

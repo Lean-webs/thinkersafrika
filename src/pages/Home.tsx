@@ -35,9 +35,9 @@ const pillars = [
     image: images.fleetBureau,
   },
   {
-    to: "/total-mine-visibility",
+    to: "/yellow-plant-visibility",
     index: "05",
-    title: "Total Mine Visibility",
+    title: "Yellow Plant Visibility",
     copy: "Executive AI overlay for pit-level yellow plant: diesel governance, operator scoring and contractor accountability.",
     image: images.tmvPit,
   },
@@ -88,7 +88,7 @@ export function Home() {
             transition={{ duration: 0.7, delay: 0.38 }}
           >
             Commodity transport. Diesel Supply. Miner Real-Time Locator.
-            Fleet monitoring. Total Mine Visibility. One South African team
+            Fleet monitoring. Yellow Plant Visibility. One South African team
             built for mining operations that cannot afford blind spots.
           </motion.p>
           <motion.div
@@ -118,7 +118,7 @@ export function Home() {
               "Diesel Supply",
               "MRTL",
               "Fleet monitoring",
-              "Total Mine Visibility",
+              "Yellow Plant Visibility",
               "Registered 2015",
               "Think differently",
             ]
@@ -127,7 +127,7 @@ export function Home() {
                 "Diesel Supply",
                 "MRTL",
                 "Fleet monitoring",
-                "Total Mine Visibility",
+                "Yellow Plant Visibility",
                 "Registered 2015",
                 "Think differently",
               ])
@@ -331,7 +331,7 @@ export function Home() {
         </div>
         <div className="container home-tmv-band__content">
           <Reveal>
-            <p className="eyebrow">Thinkers Afrika · Pit intelligence</p>
+            <p className="eyebrow">Thinkers Afrika · Yellow Plant Visibility</p>
             <h2>
               Yellow plant performance,
               <br />
@@ -343,10 +343,10 @@ export function Home() {
               contractor SLA proof for collieries that refuse blind spots.
             </p>
             <Link
-              to="/total-mine-visibility"
+              to="/yellow-plant-visibility"
               className="btn btn-primary btn-arrow"
             >
-              Explore Mine Visibility
+              Explore Yellow Plant
             </Link>
           </Reveal>
         </div>
@@ -359,7 +359,7 @@ export function Home() {
             <h2>Tell us what your operation needs.</h2>
             <p className="lead">
               Commodity transport, Diesel Supply, MRTL, fleet monitoring or
-              Total Mine Visibility. One registered South African team. One
+              Yellow Plant Visibility. One registered South African team. One
               number.
             </p>
             <div className="home-split__actions">

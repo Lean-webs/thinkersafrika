@@ -167,9 +167,9 @@ export function TotalMineVisibility() {
           <div className="page-hero__shade" />
         </div>
         <div className="page-hero__content">
-          <p className="eyebrow">Thinkers Afrika · Pit intelligence</p>
+          <p className="eyebrow">Thinkers Afrika · Yellow plant</p>
           <h1>
-            Total Mine
+            Yellow Plant
             <br />
             <em>Visibility</em>
           </h1>
@@ -191,7 +191,7 @@ export function TotalMineVisibility() {
               </h2>
               <p className="tmv-prose">
                 Standard diagnostic suites give local maintenance teams raw
-                engineering telemetry. Mine executives need more. Total Mine
+                engineering telemetry. Mine executives need more. Yellow Plant
                 Visibility converts isolated hardware streams from yellow plant
                 into immediate, board-ready financial and operational directives.
                 We interface with active control rooms to enforce structural site
@@ -276,7 +276,7 @@ export function TotalMineVisibility() {
             <div className="tmv-media">
               <img
                 src={images.tmvDashboard}
-                alt="Executive Total Mine Visibility dashboard for yellow plant"
+                alt="Executive Yellow Plant Visibility dashboard"
                 loading="lazy"
               />
             </div>
@@ -469,7 +469,7 @@ export function TotalMineVisibility() {
           <Reveal delay={0.1}>
             <div className="service-actions">
               <Link to="/contact" className="btn btn-dark btn-arrow">
-                Request Total Mine Visibility
+                Request Yellow Plant Visibility
               </Link>
               <a href="tel:+27100126094" className="btn btn-ghost tmv-ghost-dark">
                 +27 10 012 6094

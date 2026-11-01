@@ -40,7 +40,7 @@ export function Contact() {
           </h1>
           <p className="lead" style={{ color: "rgba(244,241,236,0.8)" }}>
             Transport capacity, diesel contracts, Miner Real-Time Locator
-            (MRTL), fleet monitoring or Total Mine Visibility. Reach the same
+            (MRTL), fleet monitoring or Yellow Plant Visibility. Reach the same
             team.
           </p>
         </div>
@@ -114,7 +114,7 @@ export function Contact() {
                     <option>Diesel Supply</option>
                     <option>Miner Real-Time Locator (MRTL)</option>
                     <option>Fleet monitoring</option>
-                    <option>Total Mine Visibility</option>
+                    <option>Yellow Plant Visibility</option>
                     <option>General enquiry</option>
                   </select>
                 </div>

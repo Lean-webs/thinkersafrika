@@ -32,9 +32,9 @@ const services = [
     index: "04",
   },
   {
-    to: "/total-mine-visibility",
-    label: "Total Mine Visibility",
-    hint: "Pit intelligence",
+    to: "/yellow-plant-visibility",
+    label: "Yellow Plant Visibility",
+    hint: "Pit machines & plant",
     index: "05",
   },
 ];
@@ -154,8 +154,8 @@ export function Nav() {
                   <div className="nav__mega-head">
                     <p className="nav__mega-eyebrow">Thinkers Afrika · Services</p>
                     <p className="nav__mega-lead">
-                      Five capabilities. One operating standard for mining
-                      clients who need proof, not promises.
+                      Five services. One accountable team that shows what
+                      moved, what failed, and what to do next.
                     </p>
                   </div>
                   <div className="nav__mega-rail">

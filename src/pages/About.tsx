@@ -60,7 +60,7 @@ const timeline = [
   {
     year: "Today",
     title: "Full operating stack",
-    copy: "Transport, Diesel Supply, MRTL, fleet monitoring and Total Mine Visibility under one accountable team.",
+    copy: "Transport, Diesel Supply, MRTL, fleet monitoring and Yellow Plant Visibility under one accountable team.",
   },
 ];
 
@@ -97,11 +97,6 @@ const partners = [
     name: "Engen",
     role: "Diesel supplier",
     copy: "Engen supplies diesel to Thinkers Afrika, anchoring product access for our Diesel Supply operations and the fleets and sites we keep fuelled.",
-  },
-  {
-    name: "Nexus Fuel Solutions",
-    role: "Fuel solutions partner",
-    copy: "Partnered for fuel solutions that help keep mining and logistics operations supplied with commercial clarity and dependable fulfilment.",
   },
 ];
 
@@ -294,59 +289,6 @@ export function About() {
         </div>
       </section>
 
-      <section className="about-band">
-        <div className="about-band__media" aria-hidden="true">
-          <img src={images.homeHero} alt="" loading="lazy" />
-          <div className="about-band__shade" />
-        </div>
-        <div className="container">
-          <Reveal>
-            <div className="about-copy">
-              <p className="eyebrow">Thinkers Afrika · Leadership</p>
-              <h2 className="service-h2">
-                Ownership and the accountability behind the brand.
-              </h2>
-              <p className="about-prose about-prose--on-dark">
-                Thinkers Afrika is director-led. Leadership is measured in how
-                clearly we own outcomes for clients, partners and the people who
-                keep operations moving.
-              </p>
-            </div>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <div className="about-director">
-              <div className="about-director__info">
-                <span>Director</span>
-                <h3>Phillip Mahlinza</h3>
-                <p>
-                  Director of Thinkers Afrika, accountable for strategic
-                  direction, delivery standards and the partnerships that keep
-                  mining clients protected.
-                </p>
-              </div>
-              <div className="about-director__links">
-                <a
-                  href="https://za.linkedin.com/in/phillip-mahlinza-318703151"
-                  className="btn btn-primary btn-arrow"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Director on LinkedIn
-                </a>
-                <a
-                  href={companyLinkedIn}
-                  className="btn btn-ghost"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Company on LinkedIn
-                </a>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
       <section className="section section-soft">
         <div className="container">
           <Reveal>
@@ -462,7 +404,7 @@ export function About() {
                 Stay close to how Thinkers Afrika shows up for mining and
                 logistics clients. Visit our company page, or speak to us
                 directly about transport, diesel, MRTL, fleet monitoring or
-                Total Mine Visibility.
+                Yellow Plant Visibility.
               </p>
             </div>
           </Reveal>

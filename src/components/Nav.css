@@ -35,6 +35,24 @@
   gap: 1.5rem;
 }
 
+.nav__bar.container-wide {
+  width: min(1400px, calc(100% - 3.25rem));
+}
+
+.nav__bar .logo {
+  margin-left: 0.35rem;
+}
+
+@media (min-width: 900px) {
+  .nav__bar.container-wide {
+    width: min(1400px, calc(100% - 4rem));
+  }
+
+  .nav__bar .logo {
+    margin-left: 0.5rem;
+  }
+}
+
 .nav__desktop {
   display: none;
   margin-left: auto;
@@ -133,6 +151,16 @@
   position: relative;
   z-index: 1;
   padding-top: 1.35rem;
+}
+
+.nav__mega-inner.container-wide {
+  width: min(1400px, calc(100% - 3.25rem));
+}
+
+@media (min-width: 900px) {
+  .nav__mega-inner.container-wide {
+    width: min(1400px, calc(100% - 4rem));
+  }
 }
 
 .nav__mega-head {
